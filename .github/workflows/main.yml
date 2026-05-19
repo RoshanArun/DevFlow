@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -31,20 +30,23 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: 'studioboard/package-lock.json'
- 
+
       - name: Install dependencies
         run: npm ci
- 
+        working-directory: ./studioboard
+
       - name: Run tests
         run: npm test
- 
+        working-directory: ./studioboard
+
       - name: Build
         run: npm run build
+        working-directory: ./studioboard
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./studioboard/dist
 
   deploy:
     name: Deploy to GitHub Pages
