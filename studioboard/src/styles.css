@@ -489,3 +489,34 @@ html, body, #root { height: 100%; }
   .panel-actions-row .btn, .panel-actions-row .mini-segmented { width: 100%; }
   .mini-segmented button { flex: 1; }
 }
+
+/* Final viewport fit fix for Projects, Clients, and Invoices */
+.projects-view-panel,
+.clients-panel,
+.invoices-panel {
+  height: calc(100vh - 200px) !important;
+  max-height: calc(100vh - 200px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Keep Open Invoices smaller on the dashboard only */
+.dashboard-invoices {
+  min-height: 420px !important;
+  max-height: 420px !important;
+  height: 420px !important;
+}
+
+.dashboard-invoices .table-scroll {
+  max-height: 300px !important;
+  overflow: auto !important;
+  padding-bottom: 14px !important;
+}
+
+/* Full Invoices tab still uses the larger workspace height */
+.invoices-panel:not(.dashboard-invoices) {
+  height: calc(100vh - 230px) !important;
+  max-height: calc(100vh - 230px) !important;
+}
